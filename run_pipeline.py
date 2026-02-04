@@ -11,7 +11,7 @@ from etl.transform import (
     build_feature_lists
 )
 from etl.load import load_table
-from modeling.trainer import run_training
+from model.trainer import run_training
 
 # Configure Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
