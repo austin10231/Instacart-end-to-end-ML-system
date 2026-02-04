@@ -1,0 +1,30 @@
+
+features:
+  target: "reordered"
+  model_features: 
+    - "user_order_cnt"
+    - "mean_days_since_last_order"
+    - "avg_order_hour"
+    - "user_dow"
+    - "product_cnt"
+    - "product_unique_user"
+    - "product_reorder_rate"
+    - "up_cnt"
+    - "up_last_order"
+    - "up_ratio"
+  log_transform_cols: 
+    - "product_cnt"
+    - "product_unique_user"
+    - "user_order_cnt"
+
+model_params:
+  n_estimators: 200
+  max_depth: 12
+  min_samples_leaf: 50
+  random_state: 42
+  n_jobs: -1
+
+training:
+  test_size: 0.2
+  best_threshold: 0.4  # 你通过对比选出的最优阈值
+  model_output_path: "models/rf_final_model.joblib"
