@@ -6,12 +6,11 @@ from etl.transform import (
     filter_prior_orders,
     build_user_features,
     build_product_features,
-    build_user_product_features,
     assemble_training_table,
     build_feature_lists
 )
 from etl.load import load_table
-from model.trainer import run_training
+from modeling.trainer import run_training
 
 # Configure Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -33,15 +32,13 @@ def main():
     # Feature Engineering
     user_feat = build_user_features(prior_orders)
     product_feat = build_product_features(opp, prior_orders)
-    up_feat = build_user_product_features(opp, prior_orders, user_feat)
 
     # Assemble final training dataset
-    train_df = assemble_training_table(opt_new, user_feat, product_feat, up_feat)
+    train_df = assemble_training_table(opt_new, user_feat, product_feat)
 
     # Load transformed data to SQLite (L)
     load_table(user_feat, "user_features")
     load_table(product_feat, "product_features")
-    load_table(up_feat, "user_product_features")
     load_table(train_df, "training_table")
 
     # Metadata display
@@ -58,7 +55,7 @@ def main():
         # Load external configuration
         with open("config/model_config.yaml", "r") as f:
             config = yaml.safe_load(f)
-        
+         
         # Execute training using the DataFrame from ETL
         run_training(train_df, config)
         
