@@ -48,6 +48,3 @@ python predict.py
 * `run_pipeline.py`: Main script to execute the training pipeline.
 * `predict.py`: Standalone script for model inference.
 
-```
-
-```
