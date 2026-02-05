@@ -9,9 +9,6 @@ features:
     - "product_cnt"
     - "product_unique_user"
     - "product_reorder_rate"
-    - "up_cnt"
-    - "up_last_order"
-    - "up_ratio"
   log_transform_cols: 
     - "product_cnt"
     - "product_unique_user"
