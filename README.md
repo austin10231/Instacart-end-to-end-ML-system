@@ -1,7 +1,4 @@
 
-没问题，这是为您精简后的 **README.md**，直接复制即可：
-
-```markdown
 # Instacart End-to-End ML System
 **Author: Mutian He**
 
