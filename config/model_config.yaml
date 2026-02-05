@@ -24,4 +24,4 @@ model_params:
 training:
   test_size: 0.2
   best_threshold: 0.4  # 你通过对比选出的最优阈值
-  model_output_path: "models/rf_final_model.joblib"
+  model_output_path: "modeling/rf_final_model.joblib"
