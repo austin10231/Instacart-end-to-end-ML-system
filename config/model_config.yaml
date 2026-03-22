@@ -1,0 +1,38 @@
+features:
+  target: "reordered"
+  model_features:
+    - "user_order_cnt"
+    - "mean_days_since_last_order"
+    - "avg_order_hour"
+    - "user_dow"
+    - "product_cnt"
+    - "product_unique_user"
+    - "product_reorder_rate"
+    - "up_order_count"
+    - "up_reorder_rate"
+    - "up_order_rate"
+    - "up_orders_since_last_order"
+  log_transform_cols:
+    - "product_cnt"
+    - "product_unique_user"
+    - "user_order_cnt"
+    - "up_order_count"
+
+model_params:
+  n_estimators: 200
+  max_depth: 12
+  min_samples_leaf: 50
+  random_state: 42
+  n_jobs: -1
+  class_weight: "balanced_subsample"
+
+training:
+  test_size: 0.2
+  val_size: 0.2
+  split_strategy: "group_user"
+  best_threshold: null
+  stratify: true
+  model_output_path: "modeling/rf_final_model.joblib"
+  metrics_output_path: "artifacts/metrics.json"
+  report_output_path: "artifacts/classification_report.txt"
+  feature_importance_output_path: "artifacts/feature_importance.csv"

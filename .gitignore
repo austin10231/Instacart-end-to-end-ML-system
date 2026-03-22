@@ -1,0 +1,8 @@
+# Ignore model weights
+modeling/*.joblib
+artifacts/
+instacart.db
+# Ignore temporary python files
+__pycache__/
+*.pyc
+.pytest_cache/
